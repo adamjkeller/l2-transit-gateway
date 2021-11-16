@@ -1,8 +1,4 @@
-# L2 Construct for Transit Gateway
-
-An L2 construct for TGW. Please note, the intention is to contribute this back upstream so this is a temporary resting place as I get familiar with CDK's contributing guidelines/steps.
-
-```typescript
+/// !cdk-integ *
 import * as ec2 from '@aws-cdk/aws-ec2';
 import * as cdk from '@aws-cdk/core';
 import { TGWFeature, TransitGateway } from '../src';
@@ -39,18 +35,9 @@ class TestStack extends cdk.Stack {
       { destinationCidrBlock: vpcA.vpcCidrBlock, transitGatewayAttachment: vpcAAttachment },
       { destinationCidrBlock: vpcB.vpcCidrBlock, transitGatewayAttachment: vpcBAttachment },
     ]);
-
-    // Make sure to modify route tables for the subnets that the transit gateway attachment resides in
   }
 }
 
 new TestStack(app, 'TestStack');
 
 app.synth();
-```
-
-## Known Limitations
-
-- Only support for VPC attachments (this is a cloudformation limitation, see [AWS::EC2::TransitGatewayAttachment](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayattachment.html)
-- Does not automatically add routes from the attached subnet to the Transit Gateway, therefore you have to modify the route table to point a CIDR range towards Transit Gateway
-  - Initial implementation added a default gateway 0.0.0.0/0 to Transit Gateway. But this could lead to nasty routing suprises, especially in situations where the default gateway actually points to a NAT gateway, so the decision is shelved at the moment.

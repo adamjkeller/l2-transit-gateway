@@ -7,11 +7,11 @@ export interface ITransitGatewayRoute extends core.IResource {
   /**
      * The ID of the transit gateway route
      */
-  readonly transitGatewayRouteId: string;
+  readonly TransitGatewayRouteId: string;
 }
 
 abstract class TransitGatewayRouteBase extends core.Resource implements ITransitGatewayRoute {
-  public abstract readonly transitGatewayRouteId: string;
+  public abstract readonly TransitGatewayRouteId: string;
 }
 
 /**
@@ -61,7 +61,7 @@ export interface TransitGatewayRouteProps {
  * @resource AWS::EC2::TransitGatewayRoute
  */
 export class TransitGatewayRoute extends TransitGatewayRouteBase {
-  public readonly transitGatewayRouteId: string;
+  public readonly TransitGatewayRouteId: string;
 
   constructor(scope: core.Construct, id: string, props: TransitGatewayRouteProps) {
     super(scope, id);
@@ -81,6 +81,6 @@ export class TransitGatewayRoute extends TransitGatewayRouteBase {
       transitGatewayRouteTableId: props.transitGatewayRouteTable?.transitGatewayRouteTableId || '', //TODO Make Different Interface between internal representation and "app" level
     });
 
-    this.transitGatewayRouteId = resource.ref;
+    this.TransitGatewayRouteId = resource.ref;
   }
 }

@@ -8,11 +8,11 @@ export interface ITransitGatewayRouteTableAssociation extends core.IResource {
      * The ID of the transit gateway route table association
      * @attribute
      */
-  readonly transitGatewayRouteTableAssociationId: string;
+  readonly TransitGatewayRouteTableAssociationId: string;
 }
 
 abstract class TransitGatewayRouteTableAssociationBase extends core.Resource implements ITransitGatewayRouteTableAssociation {
-  public abstract readonly transitGatewayRouteTableAssociationId: string;
+  public abstract readonly TransitGatewayRouteTableAssociationId: string;
 }
 
 /**
@@ -37,7 +37,7 @@ export interface TransitGatewayRouteTableAssociationProps {
  * @resource AWS::EC2::TransitGatewayRouteTableAssociation
  */
 export class TransitGatewayRouteTableAssociation extends TransitGatewayRouteTableAssociationBase {
-  public readonly transitGatewayRouteTableAssociationId: string;
+  public readonly TransitGatewayRouteTableAssociationId: string;
 
   constructor(scope: core.Construct, id: string, props: TransitGatewayRouteTableAssociationProps) {
     super(scope, id);
@@ -48,6 +48,6 @@ export class TransitGatewayRouteTableAssociation extends TransitGatewayRouteTabl
       transitGatewayRouteTableId: props.transitGatewayRouteTable.transitGatewayRouteTableId,
     });
 
-    this.transitGatewayRouteTableAssociationId = resource.ref;
+    this.TransitGatewayRouteTableAssociationId = resource.ref;
   }
 }

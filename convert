@@ -1,0 +1,7 @@
+gsed -i "s/\@aws-cdk\/aws-ec2/aws-cdk-lib\/aws-ec2/g" *.ts
+
+gsed -i "s/\@aws-cdk\/core/aws-cdk-lib/g" *.ts
+
+gsed -i "s/core/cdk/g" *.ts
+
+gsed "s/import \* as core from \'\@aws-cdk\/core\'/import \* as cdk from \'aws-cdk-lib\'/g" *.ts
